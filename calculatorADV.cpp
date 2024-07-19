@@ -8,4 +8,27 @@
 #incldue <functional>
 #include <stdexcept>
 
-class Calc 
+//The main "Calc" class will perform basic arithmetic operations, functions, unit conversions, and (elementary) calculus.
+class Calc {
+public:
+  //This constructor is used for basic arithmetic operations/ functions. and unit conversions
+  Calculator() {
+    //Basic arithmetic operations below:
+    operations["+"] = [](double a, double b) {
+      return a + b;
+    }
+    operations["-"] = [](double a, double b) {
+      return a - b;
+    }
+    operations["*"] = [](double a, double b) {
+      return a * b
+    }
+    operations["/"] = [](double a, double b) {
+      if {b == 0} {
+        throw std::runtime_error("Division by zero error");
+      }
+      return a/b
+    };
+
+  }
+} 
