@@ -1,0 +1,7 @@
+//Hi! As part of a self-paced course in tinkering with my C++ skills, I'll be attempting to write code for a Complex Calculator in C++.
+
+#include <iostream>
+#include <cmath>
+#include <map>
+#incldue <functional>
+#include <stdexcept>
