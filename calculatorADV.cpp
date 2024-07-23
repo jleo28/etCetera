@@ -29,6 +29,50 @@ public:
       }
       return a/b
     };
-
+    //Trigonometric functions, basic logarithms, and power below:
+    functions["sin"] = [](double a){
+      return std::sin(a);
+    };
+    functions["cos"] = [](double a){
+      return std::cos(a);
+    };
+    functions["tan"] = [](double a){
+      return std::tan(a);
+    };
+    functions["log"] = [](double a){
+      if(a <= 0){
+        throw std::runtime_error("Logarithm of non-positive value error")
+      }
+      return std::log(a);
+    };
+    functions["pow"] = [](double a, double b){
+      return std::pow(a, b);
+    };
+    //Common imperial/metric conversions below:
+    unitConversions["in_to_cm"] = [](double in){
+      return in * 2.54;
+    };
+    unitConversions["cm_to_in"] = [](double cm){
+      return cm / 2.54;
+    };
+    unitConversions["ft_to_m"] = [](double ft){
+      return ft * 0.3048;
+    };
+    unit_Conversions["m_to_ft"] = [](double m){
+      return m / 0.3048;
+    };
+    unitConversions["lb_to_kg"] = [](double lb){
+      return lb * 0.453592;
+    };
+    unitConversions["kg_to_lb"] = [](double kg){
+      return kg / 0.453592;
+    };
+    //Simple calculus operations below:
+    calculusOperations["diff"] = [this](std::function<double(double)> f, double x) {
+      return this->differentiate(f, x);
+    };
+    calculusOperations["int"] = [this](std::function<double(double)> f, double a, double b) {
+      return this->integrate(f, a, b);
+    };
   }
 } 
