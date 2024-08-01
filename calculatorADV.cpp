@@ -175,4 +175,53 @@ public:
         }
     }
   }
-} 
+  private:
+    //Simple Mapping to store basic operations
+    std::map<char, std::function<double(double, double)>> operations;
+
+    //Mapping for advanced functions
+    std::map<std::string, std::function<double(double)>> functions;
+
+    //Mapping for unit conversions
+    std::map<std::string, std::function<double(double)>> unitConversions;
+
+    //Mapping for calculus operations
+    std::map<std::string, std::function<double(std::function<double(double)>, double)>> calculusOperations;
+
+    //Function for numerical differentiation using finite differences
+    double differentiate(std::function<double(double)> f, double x) {
+        double h = 1e-5;  // Small step size
+        return (f(x + h) - f(x - h)) / (2 * h);
+    }
+
+    //Function for numerical integration using the trapezoidal rule
+    double integrate(std::function<double(double)> f, double a, double b) {
+        int n = 1000;  // Number of subintervals
+        double h = (b - a) / n;
+        double integral = (f(a) + f(b)) / 2.0;
+        for (int i = 1; i < n; ++i) {
+            integral += f(a + i * h);
+        }
+        integral *= h;
+        return integral;
+    }
+
+    //Function for introductory Calculator output
+    void printIntro() {
+        std::cout << "Welcome to the Advanced Calculator!" << std::endl;
+        std::cout << "You can perform the following operations:" << std::endl;
+        std::cout << "Basic Operations: +, -, *, /" << std::endl;
+        std::cout << "Advanced Functions: sin, cos, tan, log, pow" << std::endl;
+        std::cout << "Unit Conversions: in_to_cm, cm_to_in, ft_to_m, m_to_ft, lb_to_kg, kg_to_lb" << std::endl;
+        std::cout << "Calculus Operations: diff (differentiation), int (integration)" << std::endl;
+        std::cout << "Type 'exit' to quit the program." << std::endl;
+        std::cout << "------------------------------------------------" << std::endl;
+    }
+};
+//Main function to initialize Calculator run
+int main() {
+    Calculator calculator;
+    calculator.run();
+    return 0;
+}
+
